@@ -8,19 +8,19 @@ Antes se llamaba WinCopy.
 
 ## Arquitectura
 
-**Diagramas interactivos:** [carlossv923.github.io/WinClonerX/es](https://carlossv923.github.io/WinClonerX/es/) — versiones explorables de los diagramas siguientes, generadas con [Archify](https://github.com/tt-a1i/archify) a partir de [`docs/architecture/`](docs/architecture/).
+**Diagramas interactivos:** [csx-923.github.io/WinClonerX/es](https://csx-923.github.io/WinClonerX/es/) — versiones explorables de los diagramas siguientes, generadas con [Archify](https://github.com/tt-a1i/archify) a partir de [`docs/architecture/`](docs/architecture/).
 
 ### Arquitectura del sistema
 
-<p align="center"><a href="https://carlossv923.github.io/WinClonerX/es/architecture.html"><img src="docs/architecture/images/es/architecture.svg" alt="Arquitectura de WinClonerX: el usuario recorre el asistente WPF y las capas Application, Domain e Infrastructure.Windows, que usan servicios de Windows para leer el disco de origen mediante VSS y escribir en el destino únicamente a través de DiskWriteGuard, que bloquea el disco del sistema." width="100%"></a></p>
+<p align="center"><a href="https://csx-923.github.io/WinClonerX/es/architecture.html"><img src="docs/architecture/images/es/architecture.svg" alt="Arquitectura de WinClonerX: el usuario recorre el asistente WPF y las capas Application, Domain e Infrastructure.Windows, que usan servicios de Windows para leer el disco de origen mediante VSS y escribir en el destino únicamente a través de DiskWriteGuard, que bloquea el disco del sistema." width="100%"></a></p>
 
 ### Flujo de clonado
 
-<p align="center"><a href="https://carlossv923.github.io/WinClonerX/es/clone-workflow.html"><img src="docs/architecture/images/es/clone-workflow.svg" alt="Flujo de clonado: revalidar discos y plan, reducir opcionalmente el origen, preparar la instantánea VSS y el destino, copiar y verificar los clústeres usados con SHA-256, escribir GPT y configurar BCD y WinRE, y comprobar la estructura y restaurar el origen. Ante fallo o cancelación se compensan las operaciones en orden fijo, incluida la restauración del origen." width="100%"></a></p>
+<p align="center"><a href="https://csx-923.github.io/WinClonerX/es/clone-workflow.html"><img src="docs/architecture/images/es/clone-workflow.svg" alt="Flujo de clonado: revalidar discos y plan, reducir opcionalmente el origen, preparar la instantánea VSS y el destino, copiar y verificar los clústeres usados con SHA-256, escribir GPT y configurar BCD y WinRE, y comprobar la estructura y restaurar el origen. Ante fallo o cancelación se compensan las operaciones en orden fijo, incluida la restauración del origen." width="100%"></a></p>
 
 ### Ciclo de vida de la ejecución
 
-<p align="center"><a href="https://carlossv923.github.io/WinClonerX/es/execution-lifecycle.html"><img src="docs/architecture/images/es/execution-lifecycle.svg" alt="Ciclo de vida de CloneExecution: Pendiente pasa a En curso y puede terminar Completada tras la verificación estructural, Cancelada tras completar compensaciones o Fallida. La cancelación y los fallos activan compensaciones; la cancelación se difiere durante fases no interrumpibles y la retirada de un dispositivo vigilado causa un fallo." width="100%"></a></p>
+<p align="center"><a href="https://csx-923.github.io/WinClonerX/es/execution-lifecycle.html"><img src="docs/architecture/images/es/execution-lifecycle.svg" alt="Ciclo de vida de CloneExecution: Pendiente pasa a En curso y puede terminar Completada tras la verificación estructural, Cancelada tras completar compensaciones o Fallida. La cancelación y los fallos activan compensaciones; la cancelación se difiere durante fases no interrumpibles y la retirada de un dispositivo vigilado causa un fallo." width="100%"></a></p>
 
 ## Qué es
 
@@ -67,7 +67,7 @@ Si WinClonerX no consigue ampliar C:, lo indica en la pantalla de resultado. El 
 
 El instalador no está firmado. El proyecto no paga un certificado de firma. Por eso, Windows muestra avisos al instalarlo. Sigue los pasos en este orden.
 
-Descarga el archivo `WinClonerX-X.Y.Z.msi` de la página de versiones del repositorio: https://github.com/CarlosSV923/WinClonerX/releases
+Descarga el archivo `WinClonerX-X.Y.Z.msi` de la página de versiones del repositorio: https://github.com/CSX-923/WinClonerX/releases
 
 ### 1. Superar el aviso de SmartScreen
 
@@ -84,7 +84,7 @@ Get-FileHash .\WinClonerX-X.Y.Z.msi -Algorithm SHA256
 Cada versión también tiene una atestación de procedencia de GitHub. Comprueba que el instalador se compiló en este repositorio. Para esto necesitas la CLI de GitHub (`gh`):
 
 ```powershell
-gh attestation verify .\WinClonerX-X.Y.Z.msi --repo CarlosSV923/WinClonerX
+gh attestation verify .\WinClonerX-X.Y.Z.msi --repo CSX-923/WinClonerX
 ```
 
 Si la huella no coincide o la atestación no se verifica, no instales el archivo.
@@ -166,7 +166,7 @@ La desinstalación quita los archivos del programa y el acceso directo del menú
 Necesitas Windows 10 o 11 de 64 bits y el SDK de .NET 10 (10.0.x).
 
 ```powershell
-git clone https://github.com/CarlosSV923/WinClonerX.git
+git clone https://github.com/CSX-923/WinClonerX.git
 cd WinClonerX
 dotnet restore WinClonerX.slnx
 dotnet build WinClonerX.slnx -c Release
